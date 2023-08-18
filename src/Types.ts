@@ -17,3 +17,7 @@ export type GlobalContextType = {
     filter: () => void;
     changePage: (action: "prev" | "next") => void;
 }
+
+export interface Action {
+    action: "prev" | "next"
+}

@@ -1,7 +1,7 @@
 #root {
-  width: 1024px;
-  height: 768px;
-  margin: 0 auto;
+    width: 1024px;
+    height: 768px;
+    margin: 0 auto;
     background-color: aliceblue;
 
   /* border: #fff 1px solid; */
@@ -29,7 +29,6 @@
 }
 
 .AccountCardsContainer {
-    border: #222 1px dashed;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -53,6 +52,7 @@
     color: #fff;
     background-color: green;
     box-shadow: 3px 3px 7px #2222226b;
+    cursor: pointer;
 }
 
 .AccountCard p {

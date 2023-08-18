@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css'
 import Redirect from './components/Redirect';
 import Home from './components/Home';
@@ -7,6 +7,7 @@ import AccountDetails from './components/Accounts/AccountDetails';
 import Layout from './components/Layout';
 
 function App() {
+    const navigate = useNavigate()
 
     return (
         <>
@@ -22,7 +23,10 @@ function App() {
                 <Route path='*' element={<Redirect />} />
             </Routes >
 
-            <footer>salir</footer>
+            <footer>
+                <button onClick={() => navigate('/')}>salir</button>
+            </footer>
+
         </>
     )
 }

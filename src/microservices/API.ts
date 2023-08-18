@@ -6,7 +6,6 @@ export const getAccounts = async (): Promise<Account[]> => {
     try {
         const { data } = await axios(VITE_API_URL);
 
-        console.log(data.cuentas);
         return data.cuentas as Account[];
     } catch (e) {
         console.log(e);

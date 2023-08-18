@@ -1,21 +1,14 @@
-import React, { FC, ReactNode, createContext, useContext, useReducer, useState } from 'react'
+import { FC, createContext, ReactNode, useState } from 'react'
 import { Account, GlobalContextType } from '../Types'
 import { filterOriginalList } from './contextUtils';
 
+interface Props {
+    children: ReactNode;
+}
+
 export const GlobalContext = createContext<GlobalContextType | null>(null);
 
-// const contextReducer = (state, action) => {
-//     switch (action.type) {
-//         case value:
-
-//             break;
-
-//         default:
-//             break;
-//     }
-// }
-
-const ContextProvider: FC<ReactNode> = ({ children }) => {
+const ContextProvider: FC<Props> = ({ children }) => {
     const [accList, setAccList] = useState<Account[]>([])
     const [filteredAccList, setFilteredAccList] = useState<Account[]>([])
     const [currentPage, setCurrentPage] = useState<number>(1)
@@ -27,35 +20,45 @@ const ContextProvider: FC<ReactNode> = ({ children }) => {
         const aux = filterOriginalList(data)
 
         setAccList(() => aux)
+        setLoading(false)
     }
 
     const filter = () => {
         //: TODO logica de division de elementos
 
         // Determinar que elementos mostrar calculando los indices de inicio y final en base a la página actual y la cantidad total de elementos  
-        const ELEMENTS_PER_PAGE = 4,
-            end = currentPage * ELEMENTS_PER_PAGE,
-            start = end - ELEMENTS_PER_PAGE - 1;
+        const end = currentPage * 4,
+            start = end - 3;
+
+        console.log(accList);
 
         // Crear lista con los nuevos elementos
-        const newList = accList.slice(start, end)
+        const newList = accList.slice(start, end + 1)
 
-        // Agregar primer elemento o botón de retroceso si estamos creando la primer página
+        // Agregar primer elemento si estamos creando la primer página
         if (currentPage === 1) {
             newList.unshift(accList[0])
-        } else {
-            newList.unshift(accList[0])
         }
+        //: TODO
+        // else {
+        //     newList.unshift(<AccountButton action={"prev"} />)
+        // }
+
+        // Agregar último elemento si hay espacio
+        //: TODO
+
+        console.log(`newList: start ${start} / end: ${end}`);
+        console.log(newList);
 
         setFilteredAccList(() => newList)
+        setLoading(false)
     }
 
     const changePage = (action: "prev" | "next") => {
-        if (action === 'next') {
-            setCurrentPage(p => p + 1)
-        } else {
-            setCurrentPage(p => p - 1)
-        }
+        const newPage = action === "prev" ? currentPage - 1 : currentPage + 1;
+        setCurrentPage(() => newPage)
+
+        filter();
     }
 
     return (
@@ -69,6 +72,8 @@ const ContextProvider: FC<ReactNode> = ({ children }) => {
         </GlobalContext.Provider>
     );
 }
+
+export default ContextProvider;
 
 /*
     accList: Account[];

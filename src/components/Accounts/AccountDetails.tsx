@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate, useParams } from "react-router-dom";
 
-const AccountDetails = props => {
+const AccountDetails = () => {
     const { id } = useParams()
     const navigate = useNavigate()
 
@@ -16,7 +16,5 @@ const AccountDetails = props => {
         </div>
     )
 }
-
-AccountDetails.propTypes = {}
 
 export default AccountDetails
