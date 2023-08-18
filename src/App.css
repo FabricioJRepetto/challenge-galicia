@@ -1,0 +1,74 @@
+#root {
+  width: 1024px;
+  height: 768px;
+  margin: 0 auto;
+    background-color: aliceblue;
+
+  /* border: #fff 1px solid; */
+}
+.Layout {
+    height: calc(100% - 8em);
+    width: 100%;
+}
+
+.MainContainer {
+    height: calc(100% - 8em);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: #222;
+
+    /* border: 1px red solid; */
+}
+
+.AccountContainer {
+    justify-content: unset;
+}
+
+.AccountCardsContainer {
+    border: #222 1px dashed;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.AccountCard {
+    height: 150px;
+    width: 250px;
+    border-radius: .25em;
+    /* padding: .75em 1em; */
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: larger;
+    color: #fff;
+    background-color: green;
+    box-shadow: 3px 3px 7px #2222226b;
+}
+
+.AccountCard p {
+    margin: 0;
+}
+
+header, footer {
+    padding: 1em;
+    height: 2em;
+    display: block;
+    background-color: green;
+}
+
+footer {
+    /* position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+}
