@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import { Account, GlobalContextType } from '../../../Types';
 import { GlobalContext } from '../../../context/globalContext';
@@ -10,6 +10,15 @@ const AccountDetails = () => {
     const navigate = useNavigate()
 
     const acc: Account | undefined = accList.find(acc => acc.n === id);
+
+    // Si no encuentra una cuenta, redirecciona al "login"
+    // para simular comportamiento de una aplicación con credenciales
+    useEffect(() => {
+        setTimeout(() => {
+            !acc && navigate('/')
+        }, 0);
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className='MainContainer'>
