@@ -20,15 +20,26 @@
     [cómo clonar con GitHub CLI](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-github-cli)
 <br>
 <br>
+- Crear un archivo `.env` en la raiz del proyecto con la siguiente linea:
+
+    ```
+    VITE_API_URL='https://api.npoint.io/97d89162575a9d816661'
+    ```
+
+    
+
 - Abrir una terminal en el directorio del proyecto
 - Ejecutar los siguientes comandos:
+
     ```
     npm install
     npm run dev
     ```
+
 - Entrar a la url que aparecerá en la consola para ver despligue de la aplicación.
 
 - Para correr los tests ejecutar este comandoen el directorio del proyecto:
+
     ```
     npm run test
     ```
