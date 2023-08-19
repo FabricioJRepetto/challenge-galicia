@@ -1,27 +1,34 @@
-# React + TypeScript + Vite
+# Challenge React + TypeScript + Test unitarios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[despliegue]()
 
-Currently, two official plugins are available:
+## Instrucciones para desplegar de manera local
+> **Nota:** es necesario tener instalado **npm** y/o **git** en caso de querer clonar el proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Descargar el proyecto en un .zip [aqui](https://github.com/FabricioJRepetto/challenge-galicia/archive/refs/heads/main.zip) y extraerlo en el directorio deseado.
 
-## Expanding the ESLint configuration
+- O clonar el siguiente repositorio:<br>
+    ````
+    HTTPS: https://github.com/FabricioJRepetto/challenge-ncr.git
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+    SSH: git@github.com:FabricioJRepetto/challenge-ncr.git
 
-- Configure the top-level `parserOptions` property like this:
+    GitHub CLI: gh repo clone FabricioJRepetto/challenge-ncr
+    ````
+    [cómo clonar con HTTPS](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls)<br>
+    [cómo clonar con SSH](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls)<br>
+    [cómo clonar con GitHub CLI](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-github-cli)
+<br>
+<br>
+- Abrir una terminal en el directorio del proyecto
+- Ejecutar los siguientes comandos:
+    ```
+    npm install
+    npm run dev
+    ```
+- Entrar a la url que aparecerá en la consola para ver despligue de la aplicación.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Para correr los tests ejecutar este comandoen el directorio del proyecto:
+    ```
+    npm run test
+    ```
