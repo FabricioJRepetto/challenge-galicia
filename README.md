@@ -1,7 +1,5 @@
 # Challenge React + TypeScript + Test unitarios
 
-[despliegue](https://fabriciojrepetto.github.io/challenge-ncr/)
-
 ## Instrucciones para desplegar de manera local
 > **Nota:** es necesario tener instalado **npm** y/o **git** en caso de querer clonar el proyecto
 
