@@ -26,7 +26,9 @@
     VITE_API_URL='https://api.npoint.io/97d89162575a9d816661'
     ```
 
+    el directorio debe verse así:
     
+![img](https://res.cloudinary.com/dsyjj0sch/image/upload/v1692478798/portfolio-preview/Screenshot_2023-08-19_175548_g5zqrb.png)
 
 - Abrir una terminal en el directorio del proyecto
 - Ejecutar los siguientes comandos:
