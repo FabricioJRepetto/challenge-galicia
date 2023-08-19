@@ -7,7 +7,7 @@ const AccountButton = ({ action }: Action) => {
 
 
     return (
-        <div className='AccountCard' onClick={() => changePage(action)}>
+        <div className='AccountCard' data-testid={action + '-btn'} onClick={() => changePage(action)}>
             <p>{action === "prev"
                 ? "<< resultados previos"
                 : "más resultados >>"}</p>

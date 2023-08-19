@@ -1,17 +1,21 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './App.css'
-import Redirect from './components/Redirect';
-import Home from './components/Home';
-import MainAccount from './components/Accounts/MainAccount';
-import AccountDetails from './components/Accounts/AccountDetails';
-import Layout from './components/Layout';
+import Redirect from './components/common/Redirect';
+import Home from './components/common/Home';
+import MainAccount from './components/common/Accounts/MainAccount';
+import AccountDetails from './components/common/Accounts/AccountDetails';
+import Layout from './components/common/Layout';
+import logo from './assets/NCR_BIG.D.png'
 
 function App() {
     const navigate = useNavigate()
+    const location = useLocation()
 
     return (
         <>
-            <header>NCR</header>
+            <header>
+                <img src={logo} className='logo' />
+            </header>
 
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -24,9 +28,9 @@ function App() {
             </Routes >
 
             <footer>
-                <button onClick={() => navigate('/')}>salir</button>
+                {location.pathname !== "/" &&
+                    <button onClick={() => navigate('/')}>salir</button>}
             </footer>
-
         </>
     )
 }

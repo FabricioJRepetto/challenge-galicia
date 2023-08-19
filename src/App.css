@@ -28,6 +28,12 @@
     justify-content: unset;
 }
 
+.AccountDetails {
+    font-size: larger;
+    text-align: left;
+    margin-bottom: 2em;
+}
+
 .AccountCardsContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -66,9 +72,6 @@ header, footer {
     background-color: green;
 }
 
-footer {
-    /* position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0; */
+.logo {
+    height: 2em;
 }

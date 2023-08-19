@@ -12,10 +12,13 @@ export type GlobalContextType = {
     filteredAccList: Account[];
     currentPage: number;
     loading: boolean;
+    logged: boolean;
 
     saveList: (data: Account[]) => void;
     filter: () => void;
     changePage: (action: "prev" | "next") => void;
+    login: () => void;
+    logout: () => void;
 }
 
 export interface Action {

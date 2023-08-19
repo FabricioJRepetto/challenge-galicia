@@ -1,6 +1,6 @@
 import { FC, createContext, ReactNode, useState } from 'react'
 import { Account, GlobalContextType } from '../Types'
-import { filterOriginalList } from './contextUtils';
+import { elementSelector, filterOriginalList } from '../utils/contextUtils';
 
 interface Props {
     children: ReactNode;
@@ -13,47 +13,25 @@ const ContextProvider: FC<Props> = ({ children }) => {
     const [filteredAccList, setFilteredAccList] = useState<Account[]>([])
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [loading, setLoading] = useState(true)
+    const [logged, setLogged] = useState(false)
 
     // Guardar respuesta de la API
     const saveList = (data: Account[]) => {
         // filtrar datos que no nos interesan
         const aux = filterOriginalList(data)
-
         setAccList(() => aux)
+
         setLoading(false)
     }
 
     const filter = () => {
-        //: TODO logica de division de elementos
-
-        // Determinar que elementos mostrar calculando los indices de inicio y final en base a la página actual y la cantidad total de elementos  
-        const end = currentPage * 4,
-            start = end - 3;
-
-        console.log(accList);
-
-        // Crear lista con los nuevos elementos
-        const newList = accList.slice(start, end + 1)
-
-        // Agregar primer elemento si estamos creando la primer página
-        if (currentPage === 1) {
-            newList.unshift(accList[0])
-        }
-        //: TODO
-        // else {
-        //     newList.unshift(<AccountButton action={"prev"} />)
-        // }
-
-        // Agregar último elemento si hay espacio
-        //: TODO
-
-        console.log(`newList: start ${start} / end: ${end}`);
-        console.log(newList);
+        // Seleccionar elementos a mostrar en la página actual
+        const newList = elementSelector(currentPage, accList)
 
         setFilteredAccList(() => newList)
-        setLoading(false)
     }
 
+    // Cambiar página
     const changePage = (action: "prev" | "next") => {
         const newPage = action === "prev" ? currentPage - 1 : currentPage + 1;
         setCurrentPage(() => newPage)
@@ -61,12 +39,26 @@ const ContextProvider: FC<Props> = ({ children }) => {
         filter();
     }
 
+    // Parámetro utilizado para redirigir en ciertos casos
+    const login = () => {
+        setLogged(() => true)
+    }
+
+    // Vaciar Estado global
+    const logout = () => {
+        setAccList(() => [])
+        setFilteredAccList(() => [])
+        setCurrentPage(() => 1)
+        setLoading(true)
+        setLogged(false)
+    }
+
     return (
         <GlobalContext.Provider value={{
             accList, saveList,
             filteredAccList, filter,
             currentPage, changePage,
-            loading
+            loading, logged, logout, login
         }}>
             {children}
         </GlobalContext.Provider>
@@ -74,14 +66,3 @@ const ContextProvider: FC<Props> = ({ children }) => {
 }
 
 export default ContextProvider;
-
-/*
-    accList: Account[];
-    filteredAccList: Account[];
-    currentPage: number;
-    loading: boolean;
-
-    saveList: (data: Account[]) => void;
-    filter: (data: Account[]) => void;
-    changePage: () => void;
-*/

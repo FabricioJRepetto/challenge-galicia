@@ -8,4 +8,7 @@
         - elementSelector selecciona los elementos segun pagina y tamaño de array correctamente
         - filter devuelve los indices correctos segun pagina actual
 
+    Utils: 
+        - formatCurrency devuelve cadenas de caracteres correctamente formateadas
+
 */
